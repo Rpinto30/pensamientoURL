@@ -17,7 +17,7 @@ h_seg = hora%100
 resultado_hora = 0
 resultado_fecha = 0
 
-if año%4 == 0: bisiesto = True
+if año%4 == 0 and año%100 != 0 and año%400: bisiesto = True
 
 if (0 <= hora <= 999999) and (0 <= h_hora <= 23) and (0 <= h_min < 60) and (0 <= h_seg < 60):
     if (999999 < fecha <= 99999999) and (1 <= dia <= 31) and (1 <= mes <= 12):
@@ -33,7 +33,7 @@ if (0 <= hora <= 999999) and (0 <= h_hora <= 23) and (0 <= h_min < 60) and (0 <=
             h_hora = (h_hora+hora)%24
             hora = 0
             
-            if h_hora + hora == 0: dia_sum +=1
+            if h_hora + hora >= 0: dia_sum +=1
 
         #Segundos
         if (seg+h_seg >= 60): 
