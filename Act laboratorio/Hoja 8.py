@@ -23,46 +23,38 @@ print(f"Su longitud de caracteres es: {longitud}")
 '''
 #ESCENARIO 1
 n = int(input("Cantidad de clientes: "))
-atencion = {1:"malo", 2:"regular", 3:"buena",4:"muy buena", 5:"excelente"}
-resultados = [0,0,0,0,0]
-
+a = n
+respuestas = []
 
 while n > 0:
-    calificacion = int(input("Como calificaria nuestro servicio?" +
-                            "\n 5. Excelente" + 
-                            "\n 4. Muy buena" +
-                            "\n 3. Buena" +
-                            "\n 2. Regular" +
-                            "\n 1. Malo" +
-                            "\nCalificación: "))
+    evaluacion = int(input(f"Cliente no. {n+1} está satisfecho con nuestro servicio?: "))
+    if evaluacion >= 1 and evaluacion <= 5:
+        respuestas.append(evaluacion)
+        n -=1
+    else:
+        print("Error, debe de ser en una escala del 1 al 5")
+        print("----------------------------------")
     
-    if calificacion < 1 or calificacion > 5: print("Error, vuelva a intentarlo")
-    else: 
-        if calificacion == 1: resultados[0] +=1
-        elif calificacion == 2: resultados [1] += 1
-        elif calificacion == 3: resultados[2] +=1
-        elif calificacion == 4: resultados[3] +=1
-        elif calificacion == 5: resultados[4] += 1
-        n -= 1
+resultados = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
+for r in respuestas:
+    resultados[r] +=1
 
-a = resultados[0]
-z = 0
-mayor = 0
-for i in resultados:
-    if resultados.index(i) > 1:
-        print(a, (resultados[resultados.index(i)] -1))
-        if a > i:
-            mayor = z
-        if a < i: 
-            menor = z
-    a = resultados[resultados.index(i)]
-    z += 1
-print("----------------Resultados-------------")
-print(f"Excelente: {resultados[4]}\n"+ 
-      f"Muy buena: {resultados[3]}\n"+ 
-      f"Buena: {resultados[2]}\n"+
-      f"Regular: {resultados[1]}\n"+
-      f"Mala: {resultados[0]}\n")
+print("\n----------------Resultados--------------")
+for calificacion, total in resultados.items():
+        print(f"{calificacion}: {total}")
+frec = 1
+ma_frec = resultados[1]
+    
+for calificacion in range(2, 6): 
+    if resultados[calificacion] > ma_frec:
+        frec = calificacion
+        ma_frec = resultados[calificacion]
+print(f"\nLa respuesta más frecuente es: {ma_frec}")
+prom = sum(respuestas)/a
+print(f"\nPromedio de respuestas: {prom}")
+baj_prom = [i+1 for i, respuesta in enumerate(respuestas) if respuesta < prom]
+    
+if baj_prom: print(f"Los clientes que respondieron con valores menores al promedio son: {baj_prom}")
+else: print("Ningún cliente respondió con un valor menor al promedio.")
 
-print(f"Respuesta mayor: {mayor}")
-print(f"Respuesta menor: {menor}")
+
