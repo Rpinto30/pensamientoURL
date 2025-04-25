@@ -6,9 +6,10 @@ def es_par_o_impar(n):
 
 #Ejercicio 2
 def sum_list(lista):
-    res = 0
-    for i in lista: res +=i
-    return res
+    if len(lista) > 1: 
+        lista[-2] = lista[-2] + lista[-1]
+        sum_list(lista[:-1])
+    else: print(lista[0])
 
 #Ejercicio 3
 def cuenta_regresiva(n):
@@ -18,24 +19,20 @@ def cuenta_regresiva(n):
         cuenta_regresiva(n-1)
         
 #Ejercicio 4
-def cuenta_ascendente(n):
-    a = n-1
-    if a == 0: print(n)
-    else:
-        print(n)
-        cuenta_ascendente(a)
+def cuenta_ascendente(n,m=1):
+    if m > n: return
+    print(m)
+    cuenta_ascendente(n,m+1)
 
 #Ejercios 5
-a = 0
-def suma_hasta(n):
-    a += n
-    if n < 0: print(a)
-    else:
-        cuenta_regresiva(n-1)
+def sum_hasta(n,sum = 0):
+    if n < 0: print(sum)
+    else: sum_hasta(n-1,sum+n)
 
 #Ejercicio 6
 def factorial(num):
-    if num == 1: return 1
+    if num == 1 or num==0: return 1
+    elif num < 0: print("error")
     else: return num * factorial(num-1)
 
 #Ejercicio 7
@@ -47,10 +44,9 @@ def minimo(l):
         else: l.pop(1)
         minimo(l)
         
-minimo([5,3,8,2])
-
 
 #Juego
+'''
 def adivina_el_numero(numero, intentos, tiempo_inico):
     if intentos == 0: print("")
     else:
@@ -64,10 +60,11 @@ def adivina_el_numero(numero, intentos, tiempo_inico):
             adivina_el_numero(numero_secreto, intentos-1, tiempo_inicio)
             print(tiempo_inicio)
         
-    
+
 numero_secreto = 80
 print("Bienvenido al juego de Adivina el Número.")
 print("Elige un número entre 1 y 100.")
 print("¡Buena suerte!")
 tiempo_inicio = time.time() # Marca el inicio del tiempo
 adivina_el_numero(numero_secreto, 5, tiempo_inicio)
+'''
