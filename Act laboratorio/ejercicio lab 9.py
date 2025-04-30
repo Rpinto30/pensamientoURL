@@ -46,25 +46,16 @@ def minimo(l):
         
 
 #Juego
-'''
-def adivina_el_numero(numero, intentos, tiempo_inico):
-    if intentos == 0: print("")
-    else:
-        a =int(input("Ingresa un número a adivinar: "))
-        if a == numero: 
-            intentos =0
-            print("Felicidades, ganaste")
-        else:
-            print("Vuelve a intentarlo")
-            if intentos == 0: print("Lo siento, vuelve a intntarlo")
-            adivina_el_numero(numero_secreto, intentos-1, tiempo_inicio)
-            print(tiempo_inicio)
-        
-
+def adivina_el_numero(numero, intentos, tiempo_inicio):
+    n = 10
+    while n > 0: 
+        a = int(input("aa"))
+        n-=a
+        print(tiempo_inicio)
 numero_secreto = 80
+# Iniciar el juego con 5 intentos
 print("Bienvenido al juego de Adivina el Número.")
 print("Elige un número entre 1 y 100.")
 print("¡Buena suerte!")
 tiempo_inicio = time.time() # Marca el inicio del tiempo
 adivina_el_numero(numero_secreto, 5, tiempo_inicio)
-'''
